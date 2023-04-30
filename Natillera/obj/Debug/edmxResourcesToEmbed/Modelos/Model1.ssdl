@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NatilleraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abono">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Prestamo" Type="int" Nullable="false" />
+    <Property Name="Fecha_Abono" Type="date" Nullable="false" />
+    <Property Name="Valor_Abono" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Tipo" Type="int" Nullable="false" />
+    <Property Name="Ahorro_Parcial" Type="money" Nullable="false" />
+    <Property Name="Ahorro_Total" Type="money" Nullable="false" />
+    <Property Name="Total_Ganancias" Type="money" Nullable="false" />
+    <Property Name="Id_Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Natillera.dbo.Ahorro_Evento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Ahorro_Evento">
+    <Key>
+      <PropertyRef Name="Id_Ahorro" />
+      <PropertyRef Name="Id_Evento" />
+    </Key>
+    <Property Name="Id_Ahorro" Type="int" Nullable="false" />
+    <Property Name="Id_Evento" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Natillera.dbo.Ahorro_Usuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Ahorro_Usuario">
+    <Key>
+      <PropertyRef Name="Id_Ahorro" />
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Ahorro" Type="int" Nullable="false" />
+    <Property Name="Id_Usuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aporte_Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Usuario" Type="int" Nullable="false" />
+    <Property Name="Aporte" Type="money" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Inversion" Type="money" Nullable="false" />
+    <Property Name="Ganancias" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Liquidacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Ahorro" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Ahorro_Total" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permiso">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Usuario" Type="int" Nullable="false" />
+    <Property Name="Fecha_Prestamo" Type="date" Nullable="false" />
+    <Property Name="Fecha_Limite" Type="date" Nullable="false" />
+    <Property Name="Valor_Prestamo" Type="money" Nullable="false" />
+    <Property Name="Id_Tipo" Type="int" Nullable="false" />
+    <Property Name="Intereses" Type="money" Nullable="false" />
+    <Property Name="Valor_Real" Type="money" Nullable="false" />
+    <Property Name="Total_Abonado" Type="money" Nullable="false" />
+    <Property Name="Id_Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Documento" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+    <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
+    <Property Name="Id_Permiso" Type="int" Nullable="false" />
+    <Property Name="Id_Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="NatilleraModelStoreContainer">
+    <EntitySet Name="Abono" EntityType="Self.Abono" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ahorro" EntityType="Self.Ahorro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Aporte_Ahorro" EntityType="Self.Aporte_Ahorro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_Ahorro" EntityType="Self.Estado_Ahorro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_Prestamo" EntityType="Self.Estado_Prestamo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_Usuario" EntityType="Self.Estado_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Liquidacion" EntityType="Self.Liquidacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Ahorro" EntityType="Self.Tipo_Ahorro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Prestamo" EntityType="Self.Tipo_Prestamo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ahorro_Evento" EntityType="Self.Ahorro_Evento" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Ahorro_Evento].[Id_Ahorro] AS [Id_Ahorro], 
+    [Ahorro_Evento].[Id_Evento] AS [Id_Evento]
+    FROM [dbo].[Ahorro_Evento] AS [Ahorro_Evento]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Ahorro_Usuario" EntityType="Self.Ahorro_Usuario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Ahorro_Usuario].[Id_Ahorro] AS [Id_Ahorro], 
+    [Ahorro_Usuario].[Id_Usuario] AS [Id_Usuario]
+    FROM [dbo].[Ahorro_Usuario] AS [Ahorro_Usuario]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

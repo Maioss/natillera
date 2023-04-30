@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NatilleraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abono">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Prestamo" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Abono" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Valor_Abono" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Ahorro_Parcial" Type="Double" Nullable="false" />
+    <Property Name="Ahorro_Total" Type="Double" Nullable="false" />
+    <Property Name="Total_Ganancias" Type="Double" Nullable="false" />
+    <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ahorro_Evento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Ahorro" Type="Int32" Nullable="false" />
+    <Property Name="Id_Evento" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ahorro_Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Ahorro" Type="Int32" Nullable="false" />
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aporte_Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="Aporte" Type="Double" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Evento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Inversion" Type="Double" Nullable="false" />
+    <Property Name="Ganancias" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Liquidacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Ahorro" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Ahorro_Total" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permiso">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Prestamo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_Limite" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Valor_Prestamo" Type="Double" Nullable="false" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Intereses" Type="Double" Nullable="false" />
+    <Property Name="Valor_Real" Type="Double" Nullable="false" />
+    <Property Name="Total_Abonado" Type="Double" Nullable="false" />
+    <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Permiso" Type="Int32" Nullable="false" />
+    <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="NatilleraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abonoes" EntityType="Self.Abono" />
+    <EntitySet Name="Ahorroes" EntityType="Self.Ahorro" />
+    <EntitySet Name="Ahorro_Evento" EntityType="Self.Ahorro_Evento" />
+    <EntitySet Name="Ahorro_Usuario" EntityType="Self.Ahorro_Usuario" />
+    <EntitySet Name="Aporte_Ahorro" EntityType="Self.Aporte_Ahorro" />
+    <EntitySet Name="Estado_Ahorro" EntityType="Self.Estado_Ahorro" />
+    <EntitySet Name="Estado_Prestamo" EntityType="Self.Estado_Prestamo" />
+    <EntitySet Name="Estado_Usuario" EntityType="Self.Estado_Usuario" />
+    <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+    <EntitySet Name="Liquidacions" EntityType="Self.Liquidacion" />
+    <EntitySet Name="Permisoes" EntityType="Self.Permiso" />
+    <EntitySet Name="Prestamoes" EntityType="Self.Prestamo" />
+    <EntitySet Name="Tipo_Ahorro" EntityType="Self.Tipo_Ahorro" />
+    <EntitySet Name="Tipo_Prestamo" EntityType="Self.Tipo_Prestamo" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+  </EntityContainer>
+</Schema>

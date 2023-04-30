@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AHORRO</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="Estilos/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="Estilos/adminlte.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.min.css" rel="stylesheet" />
+    <link href="Estilos/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div id="dvMenu" class="col-md-12"></div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Ahorro</h3>
+                        </div>
+
+                        <form id="frmRegistroCliente">
+
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtId">ID</label>
+                                            <input type="number" class="form-control" id="txtId" value="0" placeholder="Código registro venta">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="cboTipoAhorro">Tipo de Ahorro</label>
+                                        <select class="form-control" id="cboTipoAhorro" name="tipoahorro">
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtAhorroParcial">Dinero a ingresar:</label>
+                                            <input type="number" class="form-control" id="txtAhorroParcial" placeholder="Ingrese dinero">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="cboUsuarios">Usuarios Asignados:</label>
+                                            <select class="form-control" id="cboUsuarios" name="tipoahorro">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtAhorroParcial">AhorroParcial:</label>
+                                            <input type="number" class="form-control" id="txtAhorroParcialEdit" placeholder="" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtAhorroTotal">Ahorro total:</label>
+                                            <input type="number" class="form-control" id="txtAhorroTotal" placeholder="" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtTotalGanancias">Ahorro ganancia:</label>
+                                            <input type="number" class="form-control" id="txtTotalGanancias" placeholder="" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="txtIdEstado">Id estado:</label>
+                                            <input type="number" class="form-control" id="txtIdEstado" placeholder="" disabled>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button type="button" id="btnIngresar" class="btn-block btn-lg btn-primary">REGISTRAR</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button type="button" id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="tblAhorro" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Tipo de ahorro</th>
+                                                    <th>Ahorro parcial</th>
+                                                    <th>Ahorro total</th>
+                                                    <th>Total ganancias</th>
+                                                    <th>Id estado</th>
+                                                    <th>Comando</th>
+                                                    <th>Error</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery.dataTables.min.js"></script>
+    <script src="../Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="Scripts/Grids.js"></script>
+    <script src="Scripts/Ahorro.js"></script>
+</body>
+</html>
+

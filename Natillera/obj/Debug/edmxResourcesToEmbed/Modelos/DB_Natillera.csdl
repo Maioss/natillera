@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NatilleraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Numero_Dias" Type="Int32" Nullable="false" />
+    <Property Name="Costo_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Tipo_Actividad" Relationship="Self.FK__Actividad__Id_Ti__4316F928" FromRole="Actividad" ToRole="Tipo_Actividad" />
+    <NavigationProperty Name="Ahorroes" Relationship="Self.Ahorro_Actividad" FromRole="Actividad" ToRole="Ahorro" />
+  </EntityType>
+  <EntityType Name="Ahorro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ahorro_Parcial" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Ahorro_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Total_Ganancias" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK__Ahorro__Id_Estad__33D4B598" FromRole="Ahorro" ToRole="Estado" />
+    <NavigationProperty Name="Liquidacions" Relationship="Self.FK__Liquidaci__Id_Ah__47DBAE45" FromRole="Ahorro" ToRole="Liquidacion" />
+    <NavigationProperty Name="Actividads" Relationship="Self.Ahorro_Actividad" FromRole="Ahorro" ToRole="Actividad" />
+    <NavigationProperty Name="Eventoes" Relationship="Self.Ahorro_Evento" FromRole="Ahorro" ToRole="Evento" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.Ahorro_Usuario" FromRole="Ahorro" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ahorroes" Relationship="Self.FK__Ahorro__Id_Estad__33D4B598" FromRole="Estado" ToRole="Ahorro" />
+    <NavigationProperty Name="Prestamoes" Relationship="Self.FK__Prestamo__Id_Est__2C3393D0" FromRole="Estado" ToRole="Prestamo" />
+  </EntityType>
+  <EntityType Name="Evento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Numero_Dias" Type="Int32" Nullable="false" />
+    <Property Name="Inversion" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Total_Ganancias" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Tipo_Evento" Relationship="Self.FK__Evento__Id_Tipo__3B75D760" FromRole="Evento" ToRole="Tipo_Evento" />
+    <NavigationProperty Name="Ahorroes" Relationship="Self.Ahorro_Evento" FromRole="Evento" ToRole="Ahorro" />
+  </EntityType>
+  <EntityType Name="Prestamo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha_Prestamo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_Limite" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Valor_Prestamo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Total_Abonado" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK__Prestamo__Id_Est__2C3393D0" FromRole="Prestamo" ToRole="Estado" />
+    <NavigationProperty Name="Abonoes" Relationship="Self.FK__Abono__Id_Presta__30F848ED" FromRole="Prestamo" ToRole="Abono" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.Prestamo_Usuario" FromRole="Prestamo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__IdRol__276EDEB3" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Tipo_Actividad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Porcentaje_Costo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actividads" Relationship="Self.FK__Actividad__Id_Ti__4316F928" FromRole="Tipo_Actividad" ToRole="Actividad" />
+  </EntityType>
+  <EntityType Name="Tipo_Evento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Porcentaje_Ganancia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Eventoes" Relationship="Self.FK__Evento__Id_Tipo__3B75D760" FromRole="Tipo_Evento" ToRole="Evento" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__IdRol__276EDEB3" FromRole="Usuario" ToRole="Rol" />
+    <NavigationProperty Name="Liquidacions" Relationship="Self.FK__Liquidaci__Id_Us__48CFD27E" FromRole="Usuario" ToRole="Liquidacion" />
+    <NavigationProperty Name="Ahorroes" Relationship="Self.Ahorro_Usuario" FromRole="Usuario" ToRole="Ahorro" />
+    <NavigationProperty Name="Prestamoes" Relationship="Self.Prestamo_Usuario" FromRole="Usuario" ToRole="Prestamo" />
+  </EntityType>
+  <EntityType Name="Abono">
+    <Key>
+      <PropertyRef Name="Id_Prestamo" />
+      <PropertyRef Name="Fecha_Abono" />
+      <PropertyRef Name="Valor_Abono" />
+    </Key>
+    <Property Name="Id_Prestamo" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Abono" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Valor_Abono" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Prestamo" Relationship="Self.FK__Abono__Id_Presta__30F848ED" FromRole="Abono" ToRole="Prestamo" />
+  </EntityType>
+  <EntityType Name="Liquidacion">
+    <Key>
+      <PropertyRef Name="Id_Ahorro" />
+      <PropertyRef Name="Id_Usuario" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Ahorro_Total" />
+    </Key>
+    <Property Name="Id_Ahorro" Type="Int32" Nullable="false" />
+    <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Ahorro_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Ahorro" Relationship="Self.FK__Liquidaci__Id_Ah__47DBAE45" FromRole="Liquidacion" ToRole="Ahorro" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Liquidaci__Id_Us__48CFD27E" FromRole="Liquidacion" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__Actividad__Id_Ti__4316F928">
+    <End Role="Tipo_Actividad" Type="Self.Tipo_Actividad" Multiplicity="1" />
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Actividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actividad">
+        <PropertyRef Name="Id_Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ahorro__Id_Estad__33D4B598">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ahorro">
+        <PropertyRef Name="Id_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liquidaci__Id_Ah__47DBAE45">
+    <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="1" />
+    <End Role="Liquidacion" Type="Self.Liquidacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ahorro">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Liquidacion">
+        <PropertyRef Name="Id_Ahorro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prestamo__Id_Est__2C3393D0">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prestamo">
+        <PropertyRef Name="Id_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Evento__Id_Tipo__3B75D760">
+    <End Role="Tipo_Evento" Type="Self.Tipo_Evento" Multiplicity="1" />
+    <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Evento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evento">
+        <PropertyRef Name="Id_Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Abono__Id_Presta__30F848ED">
+    <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="1" />
+    <End Role="Abono" Type="Self.Abono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prestamo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Abono">
+        <PropertyRef Name="Id_Prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IdRol__276EDEB3">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liquidaci__Id_Us__48CFD27E">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Liquidacion" Type="Self.Liquidacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Liquidacion">
+        <PropertyRef Name="Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ahorro_Actividad">
+    <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+    <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="*" />
+  </Association>
+  <Association Name="Ahorro_Evento">
+    <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="*" />
+    <End Role="Evento" Type="Self.Evento" Multiplicity="*" />
+  </Association>
+  <Association Name="Ahorro_Usuario">
+    <End Role="Ahorro" Type="Self.Ahorro" Multiplicity="*" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+  </Association>
+  <Association Name="Prestamo_Usuario">
+    <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="NatilleraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actividads" EntityType="Self.Actividad" />
+    <EntitySet Name="Ahorroes" EntityType="Self.Ahorro" />
+    <EntitySet Name="Estadoes" EntityType="Self.Estado" />
+    <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+    <EntitySet Name="Prestamoes" EntityType="Self.Prestamo" />
+    <EntitySet Name="Rols" EntityType="Self.Rol" />
+    <EntitySet Name="Tipo_Actividad" EntityType="Self.Tipo_Actividad" />
+    <EntitySet Name="Tipo_Evento" EntityType="Self.Tipo_Evento" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <EntitySet Name="Abonoes" EntityType="Self.Abono" />
+    <EntitySet Name="Liquidacions" EntityType="Self.Liquidacion" />
+    <AssociationSet Name="FK__Actividad__Id_Ti__4316F928" Association="Self.FK__Actividad__Id_Ti__4316F928">
+      <End Role="Tipo_Actividad" EntitySet="Tipo_Actividad" />
+      <End Role="Actividad" EntitySet="Actividads" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ahorro__Id_Estad__33D4B598" Association="Self.FK__Ahorro__Id_Estad__33D4B598">
+      <End Role="Estado" EntitySet="Estadoes" />
+      <End Role="Ahorro" EntitySet="Ahorroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liquidaci__Id_Ah__47DBAE45" Association="Self.FK__Liquidaci__Id_Ah__47DBAE45">
+      <End Role="Ahorro" EntitySet="Ahorroes" />
+      <End Role="Liquidacion" EntitySet="Liquidacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prestamo__Id_Est__2C3393D0" Association="Self.FK__Prestamo__Id_Est__2C3393D0">
+      <End Role="Estado" EntitySet="Estadoes" />
+      <End Role="Prestamo" EntitySet="Prestamoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Evento__Id_Tipo__3B75D760" Association="Self.FK__Evento__Id_Tipo__3B75D760">
+      <End Role="Tipo_Evento" EntitySet="Tipo_Evento" />
+      <End Role="Evento" EntitySet="Eventoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Abono__Id_Presta__30F848ED" Association="Self.FK__Abono__Id_Presta__30F848ED">
+      <End Role="Prestamo" EntitySet="Prestamoes" />
+      <End Role="Abono" EntitySet="Abonoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IdRol__276EDEB3" Association="Self.FK__Usuario__IdRol__276EDEB3">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liquidaci__Id_Us__48CFD27E" Association="Self.FK__Liquidaci__Id_Us__48CFD27E">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Liquidacion" EntitySet="Liquidacions" />
+    </AssociationSet>
+    <AssociationSet Name="Ahorro_Actividad" Association="Self.Ahorro_Actividad">
+      <End Role="Actividad" EntitySet="Actividads" />
+      <End Role="Ahorro" EntitySet="Ahorroes" />
+    </AssociationSet>
+    <AssociationSet Name="Ahorro_Evento" Association="Self.Ahorro_Evento">
+      <End Role="Ahorro" EntitySet="Ahorroes" />
+      <End Role="Evento" EntitySet="Eventoes" />
+    </AssociationSet>
+    <AssociationSet Name="Ahorro_Usuario" Association="Self.Ahorro_Usuario">
+      <End Role="Ahorro" EntitySet="Ahorroes" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="Prestamo_Usuario" Association="Self.Prestamo_Usuario">
+      <End Role="Prestamo" EntitySet="Prestamoes" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

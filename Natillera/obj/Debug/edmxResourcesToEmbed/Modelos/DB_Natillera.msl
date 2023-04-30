@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NatilleraModelStoreContainer" CdmEntityContainer="NatilleraEntities">
+    <EntitySetMapping Name="Actividads">
+      <EntityTypeMapping TypeName="NatilleraModel.Actividad">
+        <MappingFragment StoreEntitySet="Actividad">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+          <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+          <ScalarProperty Name="Numero_Dias" ColumnName="Numero_Dias" />
+          <ScalarProperty Name="Costo_Total" ColumnName="Costo_Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ahorroes">
+      <EntityTypeMapping TypeName="NatilleraModel.Ahorro">
+        <MappingFragment StoreEntitySet="Ahorro">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ahorro_Parcial" ColumnName="Ahorro_Parcial" />
+          <ScalarProperty Name="Ahorro_Total" ColumnName="Ahorro_Total" />
+          <ScalarProperty Name="Total_Ganancias" ColumnName="Total_Ganancias" />
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estadoes">
+      <EntityTypeMapping TypeName="NatilleraModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eventoes">
+      <EntityTypeMapping TypeName="NatilleraModel.Evento">
+        <MappingFragment StoreEntitySet="Evento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+          <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+          <ScalarProperty Name="Numero_Dias" ColumnName="Numero_Dias" />
+          <ScalarProperty Name="Inversion" ColumnName="Inversion" />
+          <ScalarProperty Name="Total_Ganancias" ColumnName="Total_Ganancias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prestamoes">
+      <EntityTypeMapping TypeName="NatilleraModel.Prestamo">
+        <MappingFragment StoreEntitySet="Prestamo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fecha_Prestamo" ColumnName="Fecha_Prestamo" />
+          <ScalarProperty Name="Fecha_Limite" ColumnName="Fecha_Limite" />
+          <ScalarProperty Name="Valor_Prestamo" ColumnName="Valor_Prestamo" />
+          <ScalarProperty Name="Total_Abonado" ColumnName="Total_Abonado" />
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rols">
+      <EntityTypeMapping TypeName="NatilleraModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Actividad">
+      <EntityTypeMapping TypeName="NatilleraModel.Tipo_Actividad">
+        <MappingFragment StoreEntitySet="Tipo_Actividad">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Porcentaje_Costo" ColumnName="Porcentaje_Costo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Evento">
+      <EntityTypeMapping TypeName="NatilleraModel.Tipo_Evento">
+        <MappingFragment StoreEntitySet="Tipo_Evento">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Porcentaje_Ganancia" ColumnName="Porcentaje_Ganancia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="NatilleraModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Abonoes">
+      <EntityTypeMapping TypeName="NatilleraModel.Abono">
+        <MappingFragment StoreEntitySet="Abono">
+          <ScalarProperty Name="Id_Prestamo" ColumnName="Id_Prestamo" />
+          <ScalarProperty Name="Fecha_Abono" ColumnName="Fecha_Abono" />
+          <ScalarProperty Name="Valor_Abono" ColumnName="Valor_Abono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Liquidacions">
+      <EntityTypeMapping TypeName="NatilleraModel.Liquidacion">
+        <MappingFragment StoreEntitySet="Liquidacion">
+          <ScalarProperty Name="Id_Ahorro" ColumnName="Id_Ahorro" />
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Ahorro_Total" ColumnName="Ahorro_Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Ahorro_Actividad" TypeName="NatilleraModel.Ahorro_Actividad" StoreEntitySet="Ahorro_Actividad">
+      <EndProperty Name="Actividad">
+        <ScalarProperty Name="Id" ColumnName="Id_Actividad" />
+      </EndProperty>
+      <EndProperty Name="Ahorro">
+        <ScalarProperty Name="Id" ColumnName="Id_Ahorro" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ahorro_Evento" TypeName="NatilleraModel.Ahorro_Evento" StoreEntitySet="Ahorro_Evento">
+      <EndProperty Name="Ahorro">
+        <ScalarProperty Name="Id" ColumnName="Id_Ahorro" />
+      </EndProperty>
+      <EndProperty Name="Evento">
+        <ScalarProperty Name="Id" ColumnName="Id_Evento" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ahorro_Usuario" TypeName="NatilleraModel.Ahorro_Usuario" StoreEntitySet="Ahorro_Usuario">
+      <EndProperty Name="Ahorro">
+        <ScalarProperty Name="Id" ColumnName="Id_Ahorro" />
+      </EndProperty>
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="Id" ColumnName="Id_Usuario" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Prestamo_Usuario" TypeName="NatilleraModel.Prestamo_Usuario" StoreEntitySet="Prestamo_Usuario">
+      <EndProperty Name="Prestamo">
+        <ScalarProperty Name="Id" ColumnName="Id_Prestamo" />
+      </EndProperty>
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="Id" ColumnName="Id_Usuario" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
